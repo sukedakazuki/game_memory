@@ -1,24 +1,37 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Game Memory
+​
+## サイト概要
+### サイトテーマ
+自分が遊んだゲームについて評価を残したり、気になるゲームについての評価を検索することができるレビューサイト
+​
+### テーマを選んだ理由
+今まで多くのゲームを遊んできましたが、振り返ってみるとどういったゲームを遊んだのか、どのような内容であったのかを忘れてしまっている事があり、
+友達に薦める際に困る事がありました。<br>
+そんな時に自分で遊んだゲームについて記録しておくサイトがあると、自分自身も思い出す事ができるし、友達にもみてもらうことができると考えました。<br>
+また、レビューサイトという形で記録した内容に加え、ゲームについて評価をすることで、
+オンライン上で色んな人にゲームについて紹介をすることができると考え、このテーマにしました。
+​
+### ターゲットユーザ
+- 自分が遊んだゲームについて記録や評価をしたいと考えている方
+- 気になるゲームの評価や内容を確認したい方
+​
+### 主な利用シーン
+- 遊んだゲームの記録や評価をする時
+- 気になるゲームの評価や内容を検索したい時
+- 他の方の記録内容にコメントを残したい時
+​
+## 設計書
+後ほど作成予定
+​
+## 開発環境
+- OS：macOS(Ventura)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+<!--## 使用素材-->
+<!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
+<!--- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。-->
+<!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
+<!--折りたたむ-->
