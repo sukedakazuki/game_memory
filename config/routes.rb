@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
-    get 'search' => 'homes#search', as: 'search'
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, except: [:destroy]
   end
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
     end
+    
     get 'users/mypage' => 'users#show', as: 'mypage'
     # users/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     get 'users/information/edit' => 'users#edit', as: 'edit_information'
@@ -30,5 +30,7 @@ Rails.application.routes.draw do
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
     put 'users/information' => 'users#update'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
+    
+    get 'games/search'
   end
 end
