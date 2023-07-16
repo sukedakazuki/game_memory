@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 2023_07_16_020311) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "itemName"
-    t.text "itemCaption"
-    t.text "itemUrl"
-    t.text "smallImageUrls"
-    t.text "mediumImageUrls"
+    t.string "item_name"
+    t.text "item_caption"
+    t.text "item_url"
+    t.text "small_image_urls"
+    t.text "medium_image_urls"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
