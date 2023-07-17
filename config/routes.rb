@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'top' => 'homes#top', as: 'top'
+    get '/' => 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
-    resources :posts, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :edit, :update, :destroy]
+    resources :post_comments, only: [:destroy]
   end
   
   # 顧客用
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    root 'homes#top'
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
+    
     resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]

@@ -7,6 +7,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def edit
@@ -14,6 +15,11 @@ class Admin::PostsController < ApplicationController
 
   def update
     @post.update(post_params) ? (redirect_to admin_post_path(@post)) : (render :edit)
+  end
+  
+  def destroy
+    @post.destroy
+    redirect_to posts_path
   end
 
   private
