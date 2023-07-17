@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
-    resources :posts, only: [:index, :show, :edit, :update, :destroy]
+    resources :reviews, only: [:index, :show, :edit, :update, :destroy]
     resources :post_comments, only: [:destroy]
   end
   
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     
-    resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
+    resources :reviews, only: [:index,:show,:edit,:create,:destroy,:update] do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
     end
