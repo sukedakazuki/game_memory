@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2023_07_16_020311) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "game_id"
+    t.integer "review_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 2023_07_16_020311) do
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
-    t.integer "game_id"
+    t.integer "review_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.float "rate"
     t.text "comment"
     t.integer "user_id"
