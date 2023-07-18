@@ -21,18 +21,16 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     
-    resources :reviews, only: [:index,:show,:edit,:create,:destroy,:update] do
+    resources :reviews, only: [:index,:show,:edit,:create,:destroy,:update]
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
-    end
     
-    get 'users/mypage' => 'users#show', as: 'mypage'
     # users/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
-    get 'users/information/edit' => 'users#edit', as: 'edit_information'
-    patch 'users/information' => 'users#update', as: 'update_information'
-    get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
-    put 'users/information' => 'users#update'
-    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
+    get  '/users/information' => 'users#show'
+    get  '/users/information/edit' => 'users#edit'
+    patch  '/users/information' => 'users#update'
+    get  '/users/unsubscribe' => 'users#unsubscribe'
+    patch  '/users/withdraw' => 'users#withdraw'
     
     get 'games/search'
   end
