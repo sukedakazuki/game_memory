@@ -9,7 +9,7 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
-    @review = Review.new
+    @user = User.find(current_user.id)
   end
 
   def create
