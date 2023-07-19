@@ -36,6 +36,11 @@
           <% end %>
         </li>
         <li class="nav-item">
+          <%= link_to games_path , class: "nav-link text-light" do %>
+          ゲームを探す
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to reviews_path , class: "nav-link text-light" do %>
           投稿一覧
           <% end %>
@@ -62,8 +67,8 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to about_path, class: "nav-link text-light" do %>
-          About
+          <%= link_to games_path, class: "nav-link text-light" do %>
+          ゲームを探す
           <% end %>
         </li>
         <li class="nav-item">
