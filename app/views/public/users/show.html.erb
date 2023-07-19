@@ -21,7 +21,7 @@
                   <%= image_tag review.user.get_profile_image(100,100) %>
                 <% end %>
               </td>
-              <td><%= link_to @game.item_name, review_path(review.id) %></td>
+              <td><%= link_to game.item_name, review_path(review.id) %></td>
               <td><%= review.created_at %></td>
             <% end %>
           </tr>

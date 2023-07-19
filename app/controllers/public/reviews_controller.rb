@@ -5,22 +5,12 @@ class Public::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @post_comment = PostComment.new
+    @user = User.find(current_user.id)
   end
 
   def index
     @reviews = Review.all
     @user = User.find(current_user.id)
-  end
-
-  def create
-    @review = Review.new(review_params)
-    @review.user_id = current_user.id
-    if @review.save
-      redirect_to review_path(@review), notice: "You have created review successfully."
-    else
-      @reviews = Review.all
-      render 'index'
-    end
   end
 
   def edit
@@ -36,7 +26,7 @@ class Public::ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to reviews_path
+    redirect_to reviews_path, notice: "You have destroyed review successfully."
   end
 
   private
