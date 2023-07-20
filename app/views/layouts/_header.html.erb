@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg text-center navbar-dark bg-dark">
+  <div class="collapse navbar-collapse">
+    <% if user_signed_in? %>
+    <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
+      <div class="navbar navbar-brand">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.jpg', size: '70x70' %>
+        <% end %>
+      </div>
+      <h5 style="color: white;">ようこそ、<%= current_user.name %>さん</h5>
+    </div>
+    <% elsif admin_signed_in? %>
+    <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
+      <div class="navbar navbar-brand">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.jpg', size: '70x70' %>
+        <% end %>
+      </div>
+    </div>
+    <% else %>
+      <div class="navbar navbar-brand ms-5">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.jpg', size: '70x70' %>
+        <% end %>
+        <div></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <ul class="navbar-nav mx-auto justify-content-around">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to users_information_path , class: "nav-link text-light" do %>
+          マイページ
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to posts_path , class: "nav-link text-light" do %>
+          投稿一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+          ログアウト
+          <% end %>
+        </li>
+      <% elsif admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to admin_posts_path , class: "nav-link text-light" do %>
+          投稿一覧
+          <% end %>
+        <li class="nav-item">
+          <%= link_to admin_users_path , class: "nav-link text-light" do %>
+          ユーザ一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+          ログアウト
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to about_path, class: "nav-link text-light" do %>
+          About
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to posts_path, class: "nav-link text-light" do %>
+          投稿一覧
+          <% end %>
+        <li class="nav-item">
+          <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+          新規登録
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+          ログイン
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
