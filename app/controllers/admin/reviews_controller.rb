@@ -1,4 +1,4 @@
-class Admin::PostsController < ApplicationController
+class Admin::ReviewsController < ApplicationController
   before_action :authenticate_admin!
   before_action :ensure_review, only: [:show, :edit, :update]
 
