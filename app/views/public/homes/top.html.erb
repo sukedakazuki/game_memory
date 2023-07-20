@@ -1,1 +1,19 @@
-<h1>top</h1>
+<div class="top">
+  <div class="top__wrapper row align-items-center justify-content-around">
+    <div class="top__image col-sm-6 d-flex justify-content-center">
+      <%= image_tag 'logo.jpg', class: 'logo-image' %>
+    </div>
+    <div class="top__details col-sm-6 text-center p-4">
+      <h1>Game Memory</h1>
+      <div class="top__actions d-flex justify-content-center mt-4">
+        <% if current_user %>
+          <p><%= link_to 'マイページ', users_information_path, class: 'btn btn-success ms-4 mr-4' %></p>
+          <p><%= link_to 'ゲームを探す', games_path, class: 'btn btn-success ms-4' %></p>
+        <% else %>
+          <p><%= link_to '新規登録', new_user_registration_path, class: 'btn btn-success ms-4 mr-4' %></p>
+          <p><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-success ms-4' %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
