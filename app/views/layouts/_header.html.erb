@@ -36,7 +36,12 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to posts_path , class: "nav-link text-light" do %>
+          <%= link_to games_path , class: "nav-link text-light" do %>
+          ゲームを探す
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to reviews_path , class: "nav-link text-light" do %>
           投稿一覧
           <% end %>
         </li>
@@ -47,7 +52,7 @@
         </li>
       <% elsif admin_signed_in? %>
         <li class="nav-item">
-          <%= link_to admin_posts_path , class: "nav-link text-light" do %>
+          <%= link_to admin_reviews_path , class: "nav-link text-light" do %>
           投稿一覧
           <% end %>
         <li class="nav-item">
@@ -62,12 +67,12 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to about_path, class: "nav-link text-light" do %>
-          About
+          <%= link_to games_path, class: "nav-link text-light" do %>
+          ゲームを探す
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to posts_path, class: "nav-link text-light" do %>
+          <%= link_to reviews_path, class: "nav-link text-light" do %>
           投稿一覧
           <% end %>
         <li class="nav-item">
