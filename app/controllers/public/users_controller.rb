@@ -4,7 +4,6 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @reviews = @user.reviews
-    # @game = Game.find(current_user.id)
   end
 
   def edit

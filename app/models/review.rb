@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :user
+  belongs_to :game, primary_key: "jan"
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
