@@ -16,12 +16,22 @@
   </br>
   </br>
   </br>
-      <div class="form-group mt-3 row">
-        <label class="col-md-3 col-form-label">評価</label>
-        <div class="col-md-6">
-          <%= f.text_field :rate, class:"form-control" %>
-        </div>
+      <div class="form-group" id="rate">
+        <%= f.label :評価 %>
+        <%= f.hidden_field :rate, id: :review_rate, class: 'form-control' %>
+        <div id="post_raty"></div>
       </div>
+      <script>
+        // scriptファイルをどのidの部分に配置するかを指定
+        let elem = document.querySelector('#post_raty');
+        let opt = {  
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'review[rate]',
+         };
+        raty(elem,opt);
+      </script>
       
       <div class="col-md-6 d-flex justify-content-between m-auto mt-2 mb-2">
         <div class="form-group mt-3">
