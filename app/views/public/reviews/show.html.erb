@@ -22,22 +22,19 @@
       <h2>Review detail</h2>
   	  <table class='table'>
   		  <tr>
-          <td>
-            <%= link_to user_path(@review.user.id) do %>
-              <%= image_tag @review.user.get_profile_image(100, 100) %>
-              <%= @review.user.name %>
-            <% end %>
-          </td>
-          <td><%= link_to @review.game.item_name, review_path(@review.id) %></td>
+          <td><%= image_tag @review.game.image_url %><%= @review.game.title %></td>
+        </tr>
+        <tr>
           <td><%= @review.comment %></td>
+        <tr>
           <td>
             <% if @review.user == current_user %>
-              <%= link_to "Edit", edit_review_path(@review.id) %>
+              <%= link_to "編集", edit_review_path(@review.id), class: "btn btn-md btn-success ms-3" %>
             <% end %>
           </td>
           <td>
             <% if @review.user == current_user %>
-              <%= link_to "Destroy", review_path(@review.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+              <%= link_to "削除", review_path(@review.id), class: "btn btn-md btn-danger ms-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
             <% end %>
           </td>
         </tr>

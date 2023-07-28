@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
 
-    resources :reviews, only: [:index,:show,:edit,:destroy,:update]
+    resources :reviews
     resources :games, only: [:show,:create]
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     get  '/users/unsubscribe' => 'users#unsubscribe'
     patch  '/users/withdraw' => 'users#withdraw'
     get 'games_search' => 'games#search'
+    patch '/reviews/:id/edit' => 'reviews#update'
   end
 end

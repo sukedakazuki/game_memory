@@ -7,8 +7,8 @@
           <%= image_tag 'logo.jpg', size: '70x70' %>
         <% end %>
       </div>
-      <h5 style="color: white;">ようこそ、<%= current_user.name %>さん</h5>
     </div>
+    <h5 style="color: white;">ようこそ、<%= current_user.name %>さん</h5>
     <% elsif admin_signed_in? %>
     <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
       <div class="navbar navbar-brand">
