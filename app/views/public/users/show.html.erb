@@ -14,17 +14,13 @@
           </tr>
         </thead>
         <tbody>
+          <% @reviews.each do |review| %>
           <tr>
-            <% @reviews.each do |review| %>
-              <td>
-                <%= link_to user_path(@user.id) do %>
-                  <%= image_tag review.user.get_profile_image(100,100) %>
-                <% end %>
-              </td>
-              <td><%= link_to game.item_name, review_path(review.id) %></td>
-              <td><%= review.created_at %></td>
-            <% end %>
+            <td><%= image_tag review.game.image_url %></td>
+            <td><%= link_to review.game.title, review_path(review.id) %></td>
+            <td><%= review.created_at %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

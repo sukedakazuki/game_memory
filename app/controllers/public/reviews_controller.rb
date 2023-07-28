@@ -2,6 +2,24 @@ class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
+  def new
+    @new = Review.new
+    @new.game_id = params[:game_id]
+    @game = Game.find(params[:game_id])
+  end
+
+  def create
+    @new = Review.new(review_params)
+    @new.user_id = current_user.id
+    if @new.save
+      flash[:notice] = "You have created review successfully."
+      redirect_to reviews_path
+    else
+      @user = current_user
+      redirect_to new_review_path
+    end
+  end
+
   def show
     @review = Review.find(params[:id])
     @post_comment = PostComment.new
@@ -17,8 +35,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def update
+    @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to review_path(@review), notice: "You have updated review successfully."
+      redirect_to reviews_path, notice: "You have updated review successfully."
     else
       render "edit"
     end
@@ -32,7 +51,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rate, :comment)
+    params.require(:review).permit(:rate, :comment, :user_id, :game_id)
   end
 
   def ensure_correct_user

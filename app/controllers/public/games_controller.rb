@@ -1,19 +1,6 @@
 class Public::GamesController < ApplicationController
   def show
-    @new = Game.new
     @game = Game.find(params[:id])
-  end
-
-  def create
-    @new = Review.new
-    @new.user_id = current_user.id
-    if @new.save
-      flash[:notice] = "You have created review successfully."
-      redirect_to users_information_path(current_user.id)
-    else
-      @user = current_user
-      redirect_to games_search_path
-    end
   end
 
   def search
