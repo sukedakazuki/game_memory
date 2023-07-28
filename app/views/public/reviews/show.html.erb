@@ -26,6 +26,20 @@
         </tr>
         <tr>
           <td><%= @review.comment %></td>
+        </tr>
+        <tr id="rate_<%= @review.id %>"></tr>
+          <script>
+            let elem = document.querySelector('#rate_<%= @review.id %>');
+
+            let opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              score: "<%= @review.rate %>",
+              readOnly: true,
+            };
+            raty(elem, opt);
+          </script>
         <tr>
           <td>
             <% if @review.user == current_user %>
