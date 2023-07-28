@@ -11,3 +11,9 @@ Admin.create!(
    email: 'test@test.com',
    password: 'testtest'
 )
+
+User.create!(
+  name: ENV['RAILS_GUEST_USER'],
+  email: ENV['RAILS_GUEST_ADDRESS'],
+  admin: false
+)

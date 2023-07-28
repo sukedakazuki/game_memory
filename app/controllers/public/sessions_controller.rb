@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params,  if: :devise_controller?
   before_action :reject_user, only: [:create]
 
   # GET /resource/sign_in
@@ -26,12 +25,14 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
+  
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to users_information_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
 
   protected
-  
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :email])
-  end
 
   def reject_user
     @user = User.find_by(email: params[:user][:email])
