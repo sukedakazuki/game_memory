@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <div class="col-md-12 mx-auto mt-5">
+
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-11 headline">
+        <h4><strong><%= @user.name%></strong>さんのユーザ詳細</h4>
+      </div>
+    </div>
+
+    <div class="col-md-12 mx-auto">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 20%"></th>
+            <th scope="col" style="width: 80%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>会員ID</td>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td>氏名</td>
+            <td><%= @customer.full_name %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td><%= @customer.full_name_kana %></td>
+          </tr>
+          <tr>
+             <td>郵便番号</td>
+             <td><%= @customer.postcode %></td>
+          <tr>
+             <td>住所</td>
+             <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+             <td>電話番号</td>
+             <td><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+             <td>メールアドレス</td>
+             <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td>
+              <% if @customer.is_deleted == true %>
+              <strong style="color:darkgray;"><%= "退会" %></strong>
+              <% else %>
+              <strong style="color:green;"><%= "有効" %></strong>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="col-md-4 row justify-content-between mx-auto mt-3">
+    <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success change_button mt-3"%></td>
+    <td> <%= link_to "注文履歴一覧を見る",order_admin_customer_path(@customer.id),class: "btn btn-primary mt-3"%></td>
+  </div>
+  
+</div>
