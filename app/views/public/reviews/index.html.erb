@@ -1,3 +1,7 @@
+<div class="d-flex justify-content-center mb-2">
+  <%= render 'public/searches/search' %>
+</div>
+
 <div class="container px-5 px-sm-0">
   <div class="row">
     <%= render 'public/users/profile', user: @user %>
@@ -13,6 +17,7 @@
           <tr>
             <th></th>
             <th>タイトル</th>
+            <th class="col-md-3">レビュー</th>
             <th class="col-md-2">いいね</th>
             <th class="col-md-3">コメント数</th>
             <th class="col-md-2">投稿日</th>
@@ -28,6 +33,7 @@
               <% end %>
             </td>
             <td><%= link_to review.game.title, review_path(review.id) %></td>
+            <td><%= review.comment %></td>
             <% if review.favorited_by?(current_user) %>
               <td>
                 <%= link_to review_favorites_path(review), method: :delete do %>

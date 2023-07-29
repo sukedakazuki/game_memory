@@ -12,4 +12,34 @@ class Review < ApplicationRecord
   
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
+  
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @review = Review.where("comment LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @review = Review.where("comment LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @review = Review.where("comment LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @review = Review.where("comment LIKE?","%#{word}%")
+    else
+      @review = Review.all
+    end
+  end
+  
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @review = Review.where("comment LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @review = Review.where("comment LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @review = Review.where("comment LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @review = Review.where("comment LIKE?","%#{word}%")
+    else
+      @review = Review.all
+    end
+  end
 end

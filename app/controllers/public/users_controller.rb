@@ -5,11 +5,9 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @reviews = @user.reviews
     if params[:latest]
-      @reviews = Review.latest
+      @reviews = @user.reviews.latest
     elsif params[:old]
-      @reviews = Review.old
-    else
-      @reviews = Review.all
+      @reviews = @user.reviews.old
     end
   end
 
