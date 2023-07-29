@@ -24,11 +24,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
 
+    resources :games, only: [:show,:create]
     resources :reviews do
       resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
-    resources :games, only: [:show,:create]
-    resource :favorites, only: [:create, :destroy]
 
     # users/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     get  '/users/information' => 'users#show'
