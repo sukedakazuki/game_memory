@@ -4,6 +4,13 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @reviews = @user.reviews
+    if params[:latest]
+      @reviews = Review.latest
+    elsif params[:old]
+      @reviews = Review.old
+    else
+      @reviews = Review.all
+    end
   end
 
   def edit

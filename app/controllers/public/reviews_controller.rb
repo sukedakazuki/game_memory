@@ -29,6 +29,13 @@ class Public::ReviewsController < ApplicationController
   def index
     @reviews = Review.all
     @user = User.find(current_user.id)
+    if params[:latest]
+      @reviews = Review.latest
+    elsif params[:old]
+      @reviews = Review.old
+    else
+      @reviews = Review.all
+    end
   end
 
   def edit
