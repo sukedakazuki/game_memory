@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
-    resources :post_comments, only: [:destroy]
   end
 
   # 顧客用
