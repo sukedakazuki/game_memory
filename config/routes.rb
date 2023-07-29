@@ -38,5 +38,6 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     get 'games_search' => 'games#search'
     patch '/reviews/:id/edit' => 'reviews#update'
+    post 'users/guest_sign_in' => 'sessions#guest_sign_'
   end
 end
