@@ -24,9 +24,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
 
-    resources :reviews
+    resources :reviews do
+      resources :post_comments, only: [:create, :destroy]
+    end
     resources :games, only: [:show,:create]
-    resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
 
     # users/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
