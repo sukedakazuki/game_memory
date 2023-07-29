@@ -36,4 +36,7 @@ class User < ApplicationRecord
       "有効"
     end
   end
+  
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
 end

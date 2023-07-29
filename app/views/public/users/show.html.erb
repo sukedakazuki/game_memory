@@ -4,6 +4,10 @@
 
     <div class="col-md-8 offset-md-1">
       <h2>Reviews</h2>
+      <div>
+        <%= link_to '新しい順', reviews_path(latest: "true") %>
+        <%= link_to '古い順', reviews_path(old: "true") %>
+      </div>
       <table class="table">
         <thead>
           <tr>
