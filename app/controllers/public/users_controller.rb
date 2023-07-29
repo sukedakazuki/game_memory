@@ -4,7 +4,11 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @reviews = @user.reviews
-    # @game = Game.find(current_user.id)
+    if params[:latest]
+      @reviews = @user.reviews.latest
+    elsif params[:old]
+      @reviews = @user.reviews.old
+    end
   end
 
   def edit
@@ -19,6 +23,14 @@ class Public::UsersController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
   private

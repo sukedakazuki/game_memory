@@ -1,47 +1,65 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
-      <h2>Profile</h2>
-      <p><%= image_tag @user.get_profile_image(100,100) %></p>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th>ニックネーム</th>
-              <th><%= @user.name %></th>
-            </tr>
-          </tbody>
-        </table>
-      <div class="row">
-        <%= link_to users_information_edit_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
-          <i class="fas fa-user-cog"></i>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'public/users/profile', user: @user %>
 
     <div class='col-md-8 offset-md-1'>
       <h2>Review detail</h2>
   	  <table class='table'>
   		  <tr>
-          <td>
-            <%= link_to user_path(@review.user.id) do %>
-              <%= image_tag @review.user.get_profile_image(100, 100) %>
-              <%= @review.user.name %>
-            <% end %>
-          </td>
-          <td><%= link_to @review.game.item_name, review_path(@review.id) %></td>
+          <td><%= image_tag @review.game.image_url %><%= @review.game.title %></td>
+        </tr>
+        <tr id="rate_<%= @review.id %>"></tr>
+          <script>
+            let elem = document.querySelector('#rate_<%= @review.id %>');
+
+            let opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              score: "<%= @review.rate %>",
+              readOnly: true,
+            };
+            raty(elem, opt);
+          </script>
+        <tr>
           <td><%= @review.comment %></td>
+        </tr>
+        <tr>
           <td>
             <% if @review.user == current_user %>
-              <%= link_to "Edit", edit_review_path(@review.id) %>
+              <%= link_to "編集", edit_review_path(@review.id), class: "btn btn-md btn-success ms-5" %>
             <% end %>
-          </td>
-          <td>
             <% if @review.user == current_user %>
-              <%= link_to "Destroy", review_path(@review.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+              <%= link_to "削除", review_path(@review.id), class: "btn btn-md btn-danger ms-5", method: :delete, "data-confirm" => "本当に削除しますか？" %>
             <% end %>
           </td>
         </tr>
       </table>
+      
+      <p>コメント件数：<%= @review.post_comments.count %></p>
+      <% @review.post_comments.each do |post_comment| %>
+        <table class="table table-hover table-inverse">
+          <tr>
+            <td class="col-md-3">
+              <%= image_tag post_comment.user.get_profile_image(100,100) %></br>
+            　<%= post_comment.user.name %>
+            </td>
+            <td style="white-space: normal"><%= post_comment.comment %></td>
+            <td><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td>
+              <% if post_comment.user == current_user %>
+                <%= link_to "削除", review_post_comment_path(post_comment.review, post_comment), method: :delete, class: "btn btn-md btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+      <div>
+      <%= form_with model: [@review, @post_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
+        <%= f.submit "送信する", class: "btn btn-md btn-success mt-20 pull-right" %>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>

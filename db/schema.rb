@@ -59,12 +59,11 @@ ActiveRecord::Schema.define(version: 2023_07_18_185238) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "games", force: :cascade do |t|
-    t.string "item_name"
+  create_table "games", primary_key: "jan", force: :cascade do |t|
+    t.string "title"
     t.text "item_caption"
-    t.text "item_url"
-    t.text "small_image_urls"
-    t.text "medium_image_urls"
+    t.text "url"
+    t.text "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -80,10 +79,12 @@ ActiveRecord::Schema.define(version: 2023_07_18_185238) do
   create_table "reviews", force: :cascade do |t|
     t.float "rate"
     t.text "comment"
-    t.integer "user_id"
-    t.integer "game_id"
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_reviews_on_game_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,4 +103,6 @@ ActiveRecord::Schema.define(version: 2023_07_18_185238) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "games", primary_key: "jan"
+  add_foreign_key "reviews", "users"
 end

@@ -7,8 +7,8 @@
           <%= image_tag 'logo.jpg', size: '70x70' %>
         <% end %>
       </div>
-      <h5 style="color: white;">ようこそ、<%= current_user.name %>さん</h5>
     </div>
+    <h5 style="color: white;">ようこそ、<%= current_user.name %>さん</h5>
     <% elsif admin_signed_in? %>
     <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
       <div class="navbar navbar-brand">
@@ -36,7 +36,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to games_path , class: "nav-link text-light" do %>
+          <%= link_to games_search_path , class: "nav-link text-light" do %>
           ゲームを探す
           <% end %>
         </li>
@@ -67,11 +67,6 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to games_path, class: "nav-link text-light" do %>
-          ゲームを探す
-          <% end %>
-        </li>
-        <li class="nav-item">
           <%= link_to reviews_path, class: "nav-link text-light" do %>
           投稿一覧
           <% end %>
@@ -83,6 +78,11 @@
         <li class="nav-item">
           <%= link_to new_user_session_path, class: "nav-link text-light" do %>
           ログイン
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to users_guest_sign_in_path, class: "nav-link text-light", method: :post do %>
+          ゲストログイン
           <% end %>
         </li>
       <% end %>
