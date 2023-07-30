@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   }
   
   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+    get 'users/sign_out', to: 'public/sessions#destroy'
     get 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
