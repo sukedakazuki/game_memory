@@ -18,11 +18,12 @@
       </div>
     </div>
     <% else %>
-      <div class="navbar navbar-brand ms-5">
-        <%= link_to root_path do %>
-          <%= image_tag 'logo.jpg', size: '70x70' %>
-        <% end %>
-        <div></div>
+      <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
+        <div class="navbar navbar-brand">
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.jpg', size: '70x70' %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
