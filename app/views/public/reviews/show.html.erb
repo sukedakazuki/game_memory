@@ -6,7 +6,7 @@
       <h2>Review detail</h2>
   	  <table class='table'>
   		  <tr>
-          <td><%= image_tag @review.game.image_url %><%= @review.game.title %></td>
+          <td class="h4"><%= image_tag @review.game.image_url %><%= @review.game.title %></td>
         </tr>
         <tr id="rate_<%= @review.id %>"></tr>
           <script>

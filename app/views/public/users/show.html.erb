@@ -6,11 +6,11 @@
   <div class="row">
     <%= render 'profile', user: @user %>
 
-    <div class="col-md-8 offset-md-1">
-      <h2>Memory</h2>
+    <div class="col-md-8 bg-light offset-md-1">
+      <h2 class="col-md-3 bg-dark text-white">Memory</h2>
       <div class="mt-4">
-        <%= link_to '新しい順', users_information_path(latest: "true") %>
-        <%= link_to '古い順', users_information_path(old: "true") %>
+        <%= link_to '新しい順', users_information_path(latest: "true"), class: "col-md-2 text-dark" %>
+        <%= link_to '古い順', users_information_path(old: "true") , class: "text-dark"%>
       </div>
       <table class="table">
         <thead>
@@ -28,7 +28,7 @@
           <% @reviews.each do |review| %>
           <tr>
             <td><%= image_tag review.game.image_url %></td>
-            <td><%= link_to review.game.title, review_path(review.id) %></td>
+            <td><%= link_to review.game.title, review_path(review.id), class: "text-dark" %></td>
             <td><%= review.comment %></td>
             <% if review.favorited_by?(current_user) %>
               <td>
