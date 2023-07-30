@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     patch  '/users/information' => 'users#update'
     get  '/users/unsubscribe' => 'users#unsubscribe'
     patch  '/users/withdraw' => 'users#withdraw'
+    
     get "search" => "searches#search"
     get 'games_search' => 'games#search'
     patch '/reviews/:id/edit' => 'reviews#update'
