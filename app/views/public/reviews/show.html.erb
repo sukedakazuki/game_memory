@@ -57,7 +57,7 @@
       <div>
       <%= form_with model: [@review, @post_comment] do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
-        <%= f.submit "送信する", class: "btn btn-md btn-success mt-20 pull-right" %>
+        <%= f.submit "送信する", class: "btn btn-md btn-primary mt-20 pull-right" %>
       <% end %>
       </div>
     </div>

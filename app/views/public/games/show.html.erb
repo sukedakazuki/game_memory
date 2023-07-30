@@ -1,19 +1,22 @@
 <div class="container">
   <div class="row">
     <div class='col-md-10 offset-md-1'>
-    <h2>Game detail</h2>
-      <table>
-        <tr class="form-group mt-3">
-          <td><%= image_tag @game.image_url %><%= @game.title %></td>
-        </tr>
-        <tr class="form-group row mt-3">
-          <td><%= @game.item_caption %></td>
-        </tr>
-      </table>
+    <h2 class="mt-3 mb-5">Game detail</h2>
+      <div class="d-flex justify-content-center align-items-center mt-3 mb-5">
+        <div class="col-md-2">
+          <div><%= image_tag @game.image_url %></div>
+        </div>
+        <div class="col-md-4">
+          <div><%= @game.title %></div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <div><%= @game.item_caption %></div>
+      </div>
       <div class="mx-auto text-center">
-        <div class="mt-3">
+        <div class="mt-5">
           <%= link_to "レビューする", new_review_path(:game_id => @game.id), class: 'btn btn-md btn-primary mr-3' %>
-          <%= link_to "楽天ブックス", @game.url, class: 'btn btn-md btn-success mr-3' %>
+          <%= link_to "楽天ブックス", @game.url, class: 'btn btn-md btn-danger mr-3' %>
         </div>
       </div>
     </div>

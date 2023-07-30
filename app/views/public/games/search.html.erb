@@ -1,10 +1,10 @@
 <div class="container">
-  <h2>ゲームタイトルを入力して検索</h2>
-    <div class="search-box">
+  <h4 class="my-4 text-center">ゲームタイトルを入力して検索</h4>
+    <div class="search-box col-sm-8 offset-md-2">
       <%= form_with url: games_search_path, method: :get, local: true do |f| %>
       <div class="form-group">
         <%= f.text_field :title, value: params[:title], class: "form-control" %>
-        <%= f.submit '製品名を検索', class: "form-control btn btn-success" %>
+        <%= f.submit '製品名を検索', class: "form-control btn btn-primary" %>
       </div>
       <% end %>
     </div>

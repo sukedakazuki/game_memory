@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center mb-2">
+<div class="d-flex justify-content-center my-4">
   <%= render 'public/searches/search' %>
 </div>
 
@@ -7,8 +7,8 @@
     <%= render 'profile', user: @user %>
 
     <div class="col-md-8 offset-md-1">
-      <h2>Reviews</h2>
-      <div>
+      <h2>Memory</h2>
+      <div class="mt-4">
         <%= link_to '新しい順', users_information_path(latest: "true") %>
         <%= link_to '古い順', users_information_path(old: "true") %>
       </div>
@@ -19,7 +19,7 @@
             <th class="col-md-3">タイトル</th>
             <th class="col-md-3">レビュー</th>
             <th class="col-md-2">いいね</th>
-            <th class="col-md-3">コメント数</th>
+            <th class="col-md-4">コメント数</th>
             <th class="col-md-2">投稿日</th>
             <th colspan="3"></th>
           </tr>
