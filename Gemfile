@@ -56,6 +56,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+# 日本語化(Rails 6の場合)
+gem 'rails-i18n', '~> 6.0'
+gem 'devise-i18n'
 
 gem 'rakuten_web_service'
 
@@ -67,5 +70,3 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
-
-gem 'kaminari','~> 1.2.1'
