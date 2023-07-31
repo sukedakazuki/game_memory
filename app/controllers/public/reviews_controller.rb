@@ -27,7 +27,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    @review = Review.page(params[:page]).per(5)
     @user = User.find(current_user.id)
     if params[:latest]
       @reviews = Review.latest
