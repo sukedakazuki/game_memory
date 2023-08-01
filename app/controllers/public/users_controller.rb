@@ -18,9 +18,10 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      flash[:notice] = "ユーザーを編集しました。"
+      flash[:notice] = "ユーザーの編集に成功しました。"
       redirect_to users_information_path(@user.id)
     else
+      flash.now[:alart_flash] = "ユーザーの編集に失敗しました。"
       render :edit
     end
   end
