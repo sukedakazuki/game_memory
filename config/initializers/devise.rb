@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '33b02986bdac242534bfe644b1083c5a0ab1acac3f6b9ec0d50ad96e4eef4d5899843a0e9a46e11241181392337b439007efaff50b0f13fc25ab5d433873b7b9'
+  # config.secret_key = '954454430385643b3db34032c91235335c547a44b64d9bc88bb444a72e6c56d0ba8d20e108f560b653513a8817fec0c53eebca12ca39a369e7285c8c61b61daf'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'daa1ce5499bb82ede4346f8e1de43273fd401ea0efe1ab152c6f3a38a524033681d12565a5a7d0f9555ead29fba895c65b405c266dde8c877243e4afef0c1cc6'
+  # config.pepper = '3b22c1d61f185628e93e9bccf7d5ea991807efffcaed2270729f6668b8ee476aea5838410553af8af569990f60ec7c328ca0ad0d716c04e35ff26e203e61b7da'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -244,7 +244,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -252,7 +252,7 @@ Devise.setup do |config|
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-  # config.sign_out_all_scopes = true
+  config.sign_out_all_scopes = false
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
