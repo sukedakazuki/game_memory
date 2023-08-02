@@ -11,6 +11,7 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find(params[:id])
   end
 
   def update
@@ -19,15 +20,15 @@ class Admin::ReviewsController < ApplicationController
   
   def destroy
     @review.destroy
-    redirect_to reviews_path
+    redirect_to admin_reviews_path
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:user_id, :game_id, :rate, :comment)
+    params.require(:review).permit(:user_id, :game_id, :rate, :comment, :is_deleted)
   end
-
+  
   def ensure_review
     @review = Review.find(params[:id])
   end

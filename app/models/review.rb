@@ -28,18 +28,11 @@ class Review < ApplicationRecord
     end
   end
   
-  # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @review = Review.where("comment LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @review = Review.where("comment LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @review = Review.where("comment LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @review = Review.where("comment LIKE?","%#{word}%")
+  def review_status
+    if is_deleted == true
+      "削除"
     else
-      @review = Review.all
+      "有効"
     end
   end
 end

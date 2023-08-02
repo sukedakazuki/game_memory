@@ -1,0 +1,32 @@
+<div class= 'container mt-5'>
+  <div class="col-md-10 mx-auto mt-5">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-12 headline">
+        <h4>投稿一覧</h4>
+      </div>
+    </div>
+
+    <table class ="table table-bordered border-dark table-hover align-middle">
+      <thead class="bg-secondary">
+        <tr align="center">
+          <th scope="col" style="width: 10%">ID</th>
+          <th scope="col" style="width: 40%">タイトル</th>
+          <th scope="col" style="width: 50%">レビュー</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review|%>
+        <tr align="center">
+        <td><%= review.id %></td>
+        <td>
+          <%= link_to admin_review_path(review.id), class:"text-dark border-bottom" do  %>
+          <%= review.game.title %>
+          <% end %>
+        </td>
+        <td><%= review.comment %></td>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

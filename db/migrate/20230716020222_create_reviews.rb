@@ -3,6 +3,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
     create_table :reviews do |t|
       t.float :rate
       t.text :comment
+      t.boolean :is_deleted, null: false, default: false
       t.references :game, null: false
       t.references :user, null: false, foreign_key: true
       t.timestamps

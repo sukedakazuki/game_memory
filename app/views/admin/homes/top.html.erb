@@ -1,1 +1,12 @@
-<h1>top</h1>
+<div class="row align-items-center">
+  <div class="col-sm-4 offset-md-2 d-flex justify-content-center">
+    <%= image_tag 'logo.jpg', class: 'logo-image' %>
+  </div>
+  <div class="col-sm-4 text-center p-4">
+    <h1>Game Memory</h1>
+    <div class="d-flex justify-content-center mt-4">
+      <p><%= link_to '投稿一覧', admin_reviews_path, class: 'btn btn-secondary ms-4 mr-4' %></p>
+      <p><%= link_to 'ユーザ一覧', admin_users_path, class: 'btn btn-secondary ms-4' %></p>
+    </div>
+  </div>
+</div>

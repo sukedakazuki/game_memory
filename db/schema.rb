@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2023_07_18_185238) do
   create_table "reviews", force: :cascade do |t|
     t.float "rate"
     t.text "comment"
+    t.boolean "is_deleted", default: false, null: false
     t.integer "game_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
