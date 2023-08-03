@@ -26,6 +26,19 @@
         </tr>
         <tr>
           <td>
+            <% @review_tags.each do |tag| %>
+            <i class="fa-sharp fa-solid fa-tag"></i>
+              <%= link_to tag.name,tagsearches_search_path(review_tag_id: tag.id) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td id="favorite_<%= @review.id %>" >
+          <%= render "public/favorites/favorite", review: @review %>
+          </td>
+        </tr>
+        <tr>
+          <td>
             <% if @review.user == current_user %>
               <%= link_to "編集", edit_review_path(@review.id), class: "btn btn-md btn-success ms-5" %>
             <% end %>

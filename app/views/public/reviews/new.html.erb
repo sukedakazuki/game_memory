@@ -11,12 +11,13 @@
         </div>
       </div>
       <%= form_with model: @new do |f| %>
-      <h3 class="col-md-3 bg-dark text-white mt-5">レビュー</h3>
+      <h4 class="col-md-3 bg-dark text-white mt-5">レビュー</h4>
       <div class="form-group mt-3">
         <%= f.text_area :comment, class: 'form-control',size: "20x10" %>
       </div>
-      
-      <div class="form-group" id="rate" >
+      <label class="col-md-5 bg-dark text-white">タグ(,で区切ると複数タグ登録できます)</label>
+        <%= f.text_field :name,value: @tag_list, class: 'form-control' %>
+      <div class="form-group mt-3" id="rate" >
         <%= f.label :評価, class: 'col-md-3 bg-dark text-white' %>
         <%= f.hidden_field :rate, id: :review_rate, class: 'form-control' %>
         <div id="post_raty"></div>

@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get  '/users/unsubscribe' => 'users#unsubscribe'
     patch  '/users/withdraw' => 'users#withdraw'
     
-    get "search" => "searches#search"
+    get 'tagsearches/search', to: 'tagsearches#search'
     get 'games_search' => 'games#search'
     patch '/reviews/:id/edit' => 'reviews#update'
   end

@@ -6,18 +6,21 @@ class Public::ReviewsController < ApplicationController
     @new = Review.new
     @new.game_id = params[:game_id]
     @game = Game.find(params[:game_id])
+    @tag_list = @new.review_tags.pluck(:name).join(',')
   end
 
   def create
     @new = Review.new(review_params)
     @new.user_id = current_user.id
+    tag_list = params[:review][:name].split(',')
     if @new.save
+      @new.save_review_tags(tag_list)
       flash[:notice] = "レビュー投稿に成功しました。"
       redirect_to users_information_path
     else
       @user = current_user
       flash.now[:alart_flash] = "レビューの投稿に失敗しました。"
-      redirect_to new_review_path
+      render :new
     end
   end
 
@@ -25,10 +28,22 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @post_comment = PostComment.new
     @user = User.find(current_user.id)
+    @tag_list = @review.review_tags.pluck(:name).join(',')
+    @review_tags = @review.review_tags
+  end
+  
+  def search_tag
+    #検索結果画面でもタグ一覧表示
+    @tag_list = ReviewTag.all
+    #検索されたタグを受け取る
+    @tag = ReviewTag.find(params[:review_tag_id])
+    #検索されたタグに紐づく投稿を表示
+    @reviews = @tag.reviews
   end
 
   def index
     @review = Review.all
+    @tag_list = ReviewTag.all
     @user = User.find(current_user.id)
     if params[:latest]
       @reviews = Review.latest
@@ -40,11 +55,15 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find(params[:id])
+    @tag_list = @review.review_tags.pluck(:name).join(',')
   end
 
   def update
     @review = Review.find(params[:id])
+    tag_list=params[:review][:name].split(',')
     if @review.update(review_params)
+      @review.save_review_tags(tag_list)
       redirect_to review_path(@review)
       flash[:notice] = "レビューの編集に成功しました。"
     else

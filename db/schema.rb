@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_18_185238) do
+ActiveRecord::Schema.define(version: 2023_08_03_142248) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -76,6 +76,23 @@ ActiveRecord::Schema.define(version: 2023_07_18_185238) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "review_and_tags", force: :cascade do |t|
+    t.integer "review_id", null: false
+    t.integer "review_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id", "review_tag_id"], name: "index_review_and_tags_on_review_id_and_review_tag_id", unique: true
+    t.index ["review_id"], name: "index_review_and_tags_on_review_id"
+    t.index ["review_tag_id"], name: "index_review_and_tags_on_review_tag_id"
+  end
+
+  create_table "review_tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_review_tags_on_name", unique: true
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.float "rate"
     t.text "comment"
@@ -104,6 +121,8 @@ ActiveRecord::Schema.define(version: 2023_07_18_185238) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "review_and_tags", "review_tags"
+  add_foreign_key "review_and_tags", "reviews"
   add_foreign_key "reviews", "games", primary_key: "jan"
   add_foreign_key "reviews", "users"
 end
