@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center my-4">
-<%= render 'public/tagsearches/tagsearch' %>
+<%= render 'layouts/search' %>
 </div>
 
 <div class="container px-5 px-sm-0">
@@ -26,7 +26,11 @@
         <tbody>
           <% @reviews.each do |review| %>
           <tr>
-            <td><%= image_tag review.game.image_url %></td>
+            <td>
+              <%= link_to review_path(review.id) do %>
+              <%= image_tag review.game.image_url %>
+              <% end %>
+            </td>
             <td><%= link_to review.game.title, review_path(review.id), class: "text-dark" %></td>
             <td><%= review.comment %></td>
             <td id="favorite_<%= review.id %>" >

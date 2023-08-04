@@ -1,10 +1,17 @@
-<h2><%= @model %>s search for "<%= @word %>"</h2>
-
 <div class="container px-5 px-sm-0">
   <div class="row">
+    <h2 class="col-md-12 d-flex justify-content-center bg-dark text-white">タグが"<strong><%=@tag.name%></strong>"の投稿一覧</h2>
+  
+    <!--タグリスト-->
+    <div class="col-md-12 text-center mt-3">
+      <% @tag_list.each do |list|%>
+        <i class="fa-sharp fa-solid fa-tag"></i>
+        <%=link_to list.name,search_tag_path(review_tag_id: list.id), class: "text-dark" %>
+        <%="(#{list.reviews.count})" %>
+      <% end %>
+    </div>
 
-    <div class="col-md-8 bg-light offset-md-1">
-      <h2 class="col-md-3 bg-dark text-white">Review</h2>
+    <div class="col-md-12 bg-light mt-5">
       <table class="table table-hover table-inverse">
         <thead>
           <tr>

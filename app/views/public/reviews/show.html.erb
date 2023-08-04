@@ -28,7 +28,7 @@
           <td>
             <% @review_tags.each do |tag| %>
             <i class="fa-sharp fa-solid fa-tag"></i>
-              <%= link_to tag.name,tagsearches_search_path(review_tag_id: tag.id) %>
+              <%= link_to tag.name,search_tag_path(review_tag_id: tag.id), class: "text-dark" %>
             <% end %>
           </td>
         </tr>
