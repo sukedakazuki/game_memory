@@ -42,13 +42,15 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @review = Review.all
+    @reviews = Review.all
     @tag_list = ReviewTag.all
     @user = User.find(current_user.id)
     if params[:latest]
       @reviews = Review.latest
     elsif params[:old]
       @reviews = Review.old
+    elsif params[:rate_count]
+      @reviews = Review.rate_count
     else
       @reviews = Review.all
     end

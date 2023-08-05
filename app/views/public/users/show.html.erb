@@ -10,7 +10,8 @@
       <h2 class="col-md-3 bg-dark text-white">Memory</h2>
       <div class="mt-4">
         <%= link_to '新しい順', users_information_path(latest: "true"), class: "col-md-2 text-dark" %>
-        <%= link_to '古い順', users_information_path(old: "true") , class: "text-dark"%>
+        <%= link_to '古い順', users_information_path(old: "true") , class: "col-md-2 text-dark"%>
+        <%= link_to '評価の高い順', users_information_path(rate_count: "true"), class: "col-md-2 text-dark" %>
       </div>
       <table class="table">
         <thead>

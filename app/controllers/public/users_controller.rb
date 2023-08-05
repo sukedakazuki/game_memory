@@ -8,6 +8,8 @@ class Public::UsersController < ApplicationController
       @reviews = @user.reviews.latest
     elsif params[:old]
       @reviews = @user.reviews.old
+    elsif params[:rate_count]
+      @reviews = @user.reviews.rate_count
     end
   end
 

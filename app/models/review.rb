@@ -15,6 +15,7 @@ class Review < ApplicationRecord
   
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
+  scope :rate_count, -> {order(rate: :desc)}
   
   # 検索方法分岐
   def self.looks(search, word)
