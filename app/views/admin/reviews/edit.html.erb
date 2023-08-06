@@ -28,8 +28,21 @@
                 <td><%= f.text_area :comment, autocomplete: "comment",class:"form-control", size: "20x10" %></td>
               </tr>
               <tr>
-                 <td><%= f.label :評価,class:"col-form-label" %></td>
-                 <td><%= f.text_field :rate, autocomplete: "rate",class:"form-control" %></td>
+                <td><%= f.label :評価,class:"col-form-label" %></td>
+                <td><%= f.hidden_field :rate, autocomplete: "rate",class:"form-control" %>
+                  <div id="post_raty"></div>
+                  <script>
+                      let elem = document.querySelector('#post_raty');
+            
+                      let opt = {  
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        scoreName: 'review[rate]',
+                      };
+                      raty(elem, opt);
+                  </script>
+                </td>
               </tr>
               <tr>
                 <td><%= f.label :is_deleted,"ステータス",class:"col-form-label" %></td>

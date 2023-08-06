@@ -30,7 +30,19 @@
           </tr>
           <tr>
             <td>評価</td>
-            <td><%= @review.rate %></td>
+            <td id="rate_<%= @review.id %>"></td>
+            <script>
+              let elem = document.querySelector('#rate_<%= @review.id %>');
+  
+              let opt = {  
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                score: "<%= @review.rate %>",
+                readOnly: true,
+              };
+              raty(elem, opt);
+            </script>
           </tr>
           <tr>
             <td>ステータス</td>
