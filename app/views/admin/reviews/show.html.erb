@@ -1,5 +1,5 @@
-<div class="container mt-5">
-  <div class="col-md-12 mx-auto mt-5">
+<div class="container mt-4">
+  <div class="col-md-12 mx-auto">
 
     <div class="row justify-content-center mb-3">
       <div class="col-md-8 headline">
@@ -27,6 +27,15 @@
           <tr>
             <td>レビュー</td>
             <td><%= @review.comment %></td>
+          </tr>
+          <tr>
+            <td>タグ</td>
+            <td>
+              <% @review_tags.each do |tag| %>
+              <i class="fas fa-tag"></i>
+                <%= tag.name %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td>評価</td>

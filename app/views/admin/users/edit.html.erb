@@ -1,10 +1,10 @@
 <%= render"layouts/error_messages", model: @user %>
-<div class="container mt-5">
+<div class="container mt-4">
   <div class="row justify-content-center mb-3">
     <div class="col-md-8">
     
       <div class="justify-content-center mb-3">
-        <div class="col-md-10 headline">
+        <div class="col-md-10">
           <h4><strong><%= @user.name%></strong>さんの会員情報編集</h4>
         </div>
       </div>
@@ -15,31 +15,28 @@
               <tr>
                 <th></th>
                 <th></th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>ユーザID</td>
-                <td><%= @user.id %></td>
-              </tr>
               <tr>
                 <td><%= f.label :ニックネーム,class:"col-form-label" %></td>
                 <td><%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %></td>
               </tr>
               <tr>
-                 <td><%= f.label :メールアドレス,class:"col-form-label" %></td>
-                 <td><%= f.email_field :email, autocomplete: "email",class:"form-control" %></td>
+                 <td><%= f.label :メールアドレス,class:"col-form-label mt-3" %></td>
+                 <td><%= f.email_field :email, autocomplete: "email",class:"form-control mt-3" %></td>
               </tr>
               <tr>
-                <td><%= f.label :is_deleted,"ステータス",class:"col-form-label" %></td>
                 <td>
-                  <%= f.radio_button :is_deleted, :false,class:"form-check-input" %>
-                  <%= f.label :is_deleted, "有効",class:"form-check-label" %>
+                  <%= f.label :is_deleted,"ステータス",class:"form-label mt-3" %>
                 </td>
                 <td>
-                  <%= f.radio_button :is_deleted, :true,class:"form-check-input" %>
-                  <%= f.label :is_deleted, "退会",class:"form-check-label" %>
+                  <%= f.radio_button :is_deleted, :false,class:"col-form-check-input mt-3" %>
+                  <%= f.label :is_deleted, "有効",class:"form-check-label mt-3" %>
+                </td>
+                <td>
+                  <%= f.radio_button :is_deleted, :true,class:"col-form-check-input mt-3" %>
+                  <%= f.label :is_deleted, "退会",class:"form-check-label mt-3" %>
                 </td>
               </tr>
             </tbody>

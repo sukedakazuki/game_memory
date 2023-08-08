@@ -8,14 +8,26 @@ class Admin::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @tag_list = @review.review_tags.pluck(:name).join(',')
+    @review_tags = @review.review_tags
   end
 
   def edit
     @review = Review.find(params[:id])
+    @tag_list = @review.review_tags.pluck(:name).join(',')
   end
 
   def update
-    @review.update(review_params) ? (redirect_to admin_review_path(@review)) : (render :edit)
+    @review = Review.find(params[:id])
+    tag_list=params[:review][:name].split(',')
+    if @review.update(review_params)
+      @review.save_review_tags(tag_list)
+      redirect_to admin_review_path(@review)
+      flash[:notice] = "レビューの編集に成功しました。"
+    else
+      flash.now[:alart_flash] = "レビューの編集に失敗しました。"
+      render "edit"
+    end
   end
   
   def destroy
