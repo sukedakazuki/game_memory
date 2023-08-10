@@ -1,4 +1,6 @@
 # Game Memory
+
+http://13.112.28.22（http://13.112.28.22）
 ​
 ## サイト概要
 ### サイトテーマ
@@ -31,7 +33,7 @@
 - ER図
 ​
 ## 開発環境
-- OS：Linux(Ventura)
+- OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
