@@ -25,10 +25,13 @@
 - 他の方の記録内容にコメントを残したい時
 ​
 ## 設計書
-後ほど作成予定
+- 実装機能リスト
+- UI flow
+- テーブル定義書
+- ER図
 ​
 ## 開発環境
-- OS：macOS(Ventura)
+- OS：Linux(Ventura)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
