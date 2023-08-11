@@ -3,13 +3,13 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @reviews = @user.reviews
+    @reviews = @user.reviews.page(params[:page])
     if params[:latest]
-      @reviews = @user.reviews.latest
+      @reviews = @user.reviews.latest.page(params[:page])
     elsif params[:old]
-      @reviews = @user.reviews.old
+      @reviews = @user.reviews.old.page(params[:page])
     elsif params[:rate_count]
-      @reviews = @user.reviews.rate_count
+      @reviews = @user.reviews.rate_count.page(params[:page])
     end
   end
 

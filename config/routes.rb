@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     patch  '/users/information' => 'users#update'
     get  '/users/unsubscribe' => 'users#unsubscribe'
     patch  '/users/withdraw' => 'users#withdraw'
-    
+
     get "search" => "searches#search"
     get 'games_search' => 'games#search'
     patch '/reviews/:id/edit' => 'reviews#update'
