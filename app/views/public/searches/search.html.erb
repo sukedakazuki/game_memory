@@ -15,18 +15,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @reviews.each do |review| %>
-        <tr>
-          <td>
-            <%= link_to review_path(review.id) do %>
-            <%= image_tag review.game.image_url %>
-            <% end %>
-          </td>
-          <td><%= link_to review.game.title, review_path(review.id), class: "text-dark" %></td>
-          <td><%= review.comment %></td>
-          <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <% end %>
+          <%= render "public/reviews/list", review: @review %>
         </tbody>
       <% else %>
       <!--検索対象モデルがReviewではない時(= 検索対象モデルがUserの時) -->

@@ -24,21 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @reviews.each do |review| %>
-          <tr>
-            <td>
-              <%= link_to review_path(review.id) do %>
-              <%= image_tag review.game.image_url %>
-              <% end %>
-            </td>
-            <td><%= link_to review.game.title, review_path(review.id), class: "text-dark" %></td>
-            <td><%= review.comment %></td>
-            <td id="favorite_<%= review.id %>" >
-            <%= render "public/favorites/favorite", review: review %>
-            </td>
-            <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-          <% end %>
+          <%= render "public/reviews/list", review: @review %>
         </tbody>
       </table>
     </div>
