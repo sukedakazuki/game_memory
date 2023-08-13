@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   before_action :ensure_user, only: [:show, :edit, :update]
@@ -19,12 +21,11 @@ class Admin::UsersController < ApplicationController
   end
 
   private
+    def user_params
+      params.require(:user).permit(:name, :email, :is_deleted)
+    end
 
-  def user_params
-    params.require(:user).permit(:name, :email, :is_deleted)
-  end
-
-  def ensure_user
-    @user = User.find(params[:id])
-  end
+    def ensure_user
+      @user = User.find(params[:id])
+    end
 end

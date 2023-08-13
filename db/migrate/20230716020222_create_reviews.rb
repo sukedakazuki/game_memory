@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateReviews < ActiveRecord::Migration[6.1]
   def change
     create_table :reviews do |t|
@@ -8,6 +10,6 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end
-    add_foreign_key :reviews, :games, column: :game_id , primary_key: :jan
+    add_foreign_key :reviews, :games, column: :game_id, primary_key: :jan
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
@@ -27,7 +29,7 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def withdraw
     @user = User.find(current_user.id)
     @user.update(is_deleted: true)
@@ -37,15 +39,14 @@ class Public::UsersController < ApplicationController
   end
 
   private
-
-  def user_params
-    params.require(:user).permit(:name, :profile_image, :email, :is_deleted)
-  end
-
-  def is_matching_login_user
-    user = User.find(current_user.id)
-    unless user.id == current_user.id
-      redirect_to user_path(current_user)
+    def user_params
+      params.require(:user).permit(:name, :profile_image, :email, :is_deleted)
     end
-  end
+
+    def is_matching_login_user
+      user = User.find(current_user.id)
+      unless user.id == current_user.id
+        redirect_to user_path(current_user)
+      end
+    end
 end
