@@ -5,7 +5,7 @@ class Admin::ReviewsController < ApplicationController
   before_action :ensure_review, only: [:show, :edit, :update]
 
   def index
-    @reviews = Review.all
+    @reviews = Review.page(params[:page])
   end
 
   def show
