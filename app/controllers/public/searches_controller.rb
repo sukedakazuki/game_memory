@@ -5,7 +5,7 @@ class Public::SearchesController < ApplicationController
 
   def search
     @range = params[:range]
-    @review = Review.all
+    @review = Review.page(params[:page])
 
     if @range == "Review"
       @reviews = Review.looks(params[:search], params[:word])

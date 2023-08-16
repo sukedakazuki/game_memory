@@ -11,7 +11,7 @@ class Public::GamesController < ApplicationController
     @title = params[:title]
     if @title.present?
       # この部分でresultsに楽天APIから取得したデータ（jsonデータ）を格納します。
-      # 今回は書籍のタイトルを検索して、一致するデータを格納するように設定しています。
+      # 今回はゲームのタイトルを検索して、一致するデータを格納するように設定しています。
       results = RakutenWebService::Books::Game.search({
         title: @title,
       })
