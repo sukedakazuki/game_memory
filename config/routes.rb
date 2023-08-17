@@ -42,5 +42,7 @@ Rails.application.routes.draw do
     get "games_search" => "games#search"
     patch "/reviews/:id/edit" => "reviews#update"
     get "search_tag" => "reviews#search_tag"
+    
+    get "rank" => "ranks#rank"
   end
 end

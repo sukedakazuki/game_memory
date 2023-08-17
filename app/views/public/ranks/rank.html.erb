@@ -1,0 +1,37 @@
+<!--配列の1つ目から順に1位、２位と表示される-->
+<% @favorite_ranks.each.with_index(1) do |review, i| %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-10 bg-light offset-md-1">
+      第<%= i %>位
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-md-3">タイトル</th>
+            <th class="col-md-3">レビュー</th>
+            <th class="col-md-2"></th>
+            <th class="col-md-2">投稿日</th>
+            <th colspan="5"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to review_path(review.id) do %>
+              <%= image_tag review.game.image_url %>
+              <% end %>
+            </td>
+            <td><%= link_to review.game.title, review_path(review.id), class: "text-dark" %></td>
+            <td><%= review.comment %></td>
+            <td id="favorite_<%= review.id %>" >
+            <%= render "public/favorites/favorite", review: review %>
+            </td>
+            <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>
