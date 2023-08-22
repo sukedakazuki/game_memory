@@ -29,7 +29,7 @@ class Public::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @post_comment = PostComment.new
-    @user = User.find(current_user.id)
+    @user = User.find(@review.user_id)
     @tag_list = @review.review_tags.pluck(:name).join(",")
     @review_tags = @review.review_tags
   end
