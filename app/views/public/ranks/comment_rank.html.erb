@@ -1,0 +1,36 @@
+<h3 class="col-md-3 offset-md-1 bg-dark text-white my-4">コメント数ランキング</h3>
+<!--配列の1つ目から順に1位、２位と表示される-->
+<% @comment_ranks.each.with_index(1) do |review, i| %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-12 bg-light">
+      <h4 class="col-md-2 bg-danger text-white">第<%= i %>位</h4>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-md-3">タイトル</th>
+            <th class="col-md-3">レビュー</th>
+            <th class="col-md-2"></th>
+            <th class="col-md-2">投稿日</th>
+            <th colspan="5"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to review_path(review.id) do %>
+              <%= image_tag review.game.image_url %>
+              <% end %>
+            </td>
+            <td><%= link_to review.game.title, review_path(review.id), class: "text-dark" %></td>
+            <td><%= review.comment %></td>
+            <td>コメント件数：<%= review.post_comments.count %></td>
+            <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>

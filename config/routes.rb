@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     patch "/reviews/:id/edit" => "reviews#update"
     get "search_tag" => "reviews#search_tag"
     
-    get "rank" => "ranks#rank"
+    get "favorite_rank" => "ranks#favorite_rank"
+    get "comment_rank" => "ranks#comment_rank"
   end
 end
