@@ -45,5 +45,6 @@ Rails.application.routes.draw do
     
     get "favorite_rank" => "ranks#favorite_rank"
     get "comment_rank" => "ranks#comment_rank"
+    get "game_rank" => "ranks#game_rank"
   end
 end

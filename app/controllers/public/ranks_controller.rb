@@ -9,4 +9,9 @@ class Public::RanksController < ApplicationController
     # 投稿のコメント数週間ランキング
     @comment_ranks = Review.find(PostComment.group(:review_id).where(created_at: Time.current.all_month).limit(10).order('count(review_id) desc').pluck(:review_id))
   end
+  
+  def game_rank
+    # ゲームの評価ランキング
+    @game_ranks = Game.find(Review.group(:rate).limit(5).order('avg(rate) desc').pluck(:game_id))
+  end
 end

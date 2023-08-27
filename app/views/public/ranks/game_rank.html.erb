@@ -1,0 +1,30 @@
+<h3 class="col-md-3 offset-md-1 bg-dark text-white my-4">ゲームランキング</h3>
+<!--配列の1つ目から順に1位、２位と表示される-->
+<% @game_ranks.each.with_index(1) do |game, i| %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-12 bg-light">
+      <h4 class="col-md-2 bg-danger text-white">第<%= i %>位</h4>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th class="col-md-3"></th>
+            <th class="col-md-5">タイトル</th>
+            <th class="col-md-2">評価</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= image_tag game.image_url %>
+            </td>
+            <td><%= game.title %></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>
