@@ -20,7 +20,19 @@
               <%= image_tag game.image_url %>
             </td>
             <td><%= game.title %></td>
-            <td></td>
+            <td id="rate_<%= @game_ranks %>"></td>
+            <script>
+              let elem = document.querySelector('#rate_<%= @game_ranks %>');
+  
+              let opt = {  
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                score: "<%= @game_ranks %>",
+                readOnly: true,
+              };
+              raty(elem, opt);
+            </script>
           </tr>
         </tbody>
       </table>
