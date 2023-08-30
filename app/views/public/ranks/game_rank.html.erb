@@ -20,8 +20,8 @@
               <%= image_tag game.image_url %>
             </td>
             <td><%= game.title %></td>
-            <td class="average-review-rating" data-score=<%= @review.average(:rate) %>>
-            　<%=@all_rating %>：<%= @review.average(:rate).to_f.round(1) %>
+            <td class="average-review-rating" data-score=<%= game.reviews.average(:rate) %>>
+            　<%=@all_rating %>：<%= game.reviews.average(:rate).to_f.round(1) %>
             </td>
           </tr>
         </tbody>
