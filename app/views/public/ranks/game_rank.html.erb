@@ -10,7 +10,7 @@
           <tr>
             <th class="col-md-3"></th>
             <th class="col-md-5">タイトル</th>
-            <th class="col-md-2">評価</th>
+            <th class="col-md-2">総合評価</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -21,7 +21,7 @@
             </td>
             <td><%= game.title %></td>
             <td class="average-review-rating" data-score=<%= game.reviews.average(:rate) %>>
-            　<%=@all_rating %>：<%= game.reviews.average(:rate).to_f.round(1) %>
+            　<%= game.reviews.average(:rate).to_f.round(1) %>
             </td>
           </tr>
         </tbody>
