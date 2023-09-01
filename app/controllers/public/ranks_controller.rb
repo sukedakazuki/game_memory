@@ -12,6 +12,6 @@ class Public::RanksController < ApplicationController
   
   def game_rank
     # ゲームの評価ランキング
-    @game_ranks = Game.find(Review.group(:rate).limit(5).order('avg(rate) desc').pluck(:game_id))
+    @game_ranks = Game.find(Review.group(:game_id).limit(10).order('avg(rate) desc').pluck(:game_id))
   end
 end
