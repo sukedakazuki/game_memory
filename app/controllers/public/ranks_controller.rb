@@ -2,7 +2,7 @@ class Public::RanksController < ApplicationController
   before_action :authenticate_user!
   def favorite_rank
     # 投稿のいいね数週間ランキング
-    @favorite_ranks = Review.find(Favorite.group(:review_id).limit(10).order('count(review_id) desc').pluck(:review_id))
+    @favorite_ranks = Kaminari.paginate_array(Review.find(Favorite.group(:review_id).order('count(review_id) desc').pluck(:review_id))).page(params[:page])
   end
   
   def comment_rank
@@ -12,6 +12,6 @@ class Public::RanksController < ApplicationController
   
   def game_rank
     # ゲームの評価ランキング
-    @game_ranks = Game.find(Review.group(:game_id).limit(10).order('avg(rate) desc').pluck(:game_id))
+    @game_ranks = Game.find(Review.group(:game_id).order('avg(rate) desc').pluck(:game_id))
   end
 end
