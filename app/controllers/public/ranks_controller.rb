@@ -1,6 +1,8 @@
 class Public::RanksController < ApplicationController
   before_action :authenticate_user!
   def favorite_rank
+    par_page = 10
+    @start = ((params[:page] || 1 ).to_i - 1) * par_page + 1
     # 投稿のいいね数週間ランキング
     @favorite_ranks = Kaminari.paginate_array(Review.find(Favorite.group(:review_id).order('count(review_id) desc').pluck(:review_id))).page(params[:page])
   end
