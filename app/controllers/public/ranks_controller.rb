@@ -13,7 +13,9 @@ class Public::RanksController < ApplicationController
   end
   
   def game_rank
+    par_page = 10
+    @start = ((params[:page] || 1 ).to_i - 1) * par_page + 1
     # ゲームの評価ランキング
-    @game_ranks = Game.find(Review.group(:game_id).order('avg(rate) desc').pluck(:game_id))
+    @game_ranks = Kaminari.paginate_array(Game.find(Review.group(:game_id).order('avg(rate) desc').pluck(:game_id))).page(params[:page])
   end
 end
