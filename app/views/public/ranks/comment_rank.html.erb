@@ -1,6 +1,6 @@
 <h3 class="col-md-3 offset-md-1 bg-dark text-white my-4">コメント数ランキング</h3>
 <!--配列の1つ目から順に1位、２位と表示される-->
-<% @comment_ranks.each.with_index(1) do |review, i| %>
+<% @comment_ranks.each.with_index(@start) do |review, i| %>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-12 bg-light">
@@ -34,3 +34,6 @@
   </div>
 </div>
 <% end %>
+<div class="d-flex justify-content-center my-2">
+  <%= paginate @comment_ranks %>
+</div>
