@@ -17,6 +17,10 @@
         <tbody>
           <%= render "public/reviews/list", review: @review %>
         </tbody>
+      </table>
+      <div class="row justify-content-center">
+        <%= paginate @reviews %>
+      </div>
       <% else %>
       <!--検索対象モデルがReviewではない時(= 検索対象モデルがUserの時) -->
         <thead>
@@ -40,11 +44,11 @@
         </tr>
         <% end %>
         </tbody>
-      <% end %>
       </table>
       <div class="row justify-content-center">
-        <%= paginate @review %>
+        <%= paginate @users %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -8,9 +8,9 @@ class Public::SearchesController < ApplicationController
     @review = Review.page(params[:page])
 
     if @range == "Review"
-      @reviews = Review.looks(params[:search], params[:word])
+      @reviews = Review.looks(params[:search], params[:word]).page(params[:page])
     else
-      @users = User.looks(params[:search], params[:word])
+      @users = User.looks(params[:search], params[:word]).page(params[:page])
     end
   end
 end
