@@ -40,7 +40,7 @@ class Public::ReviewsController < ApplicationController
     # 検索されたタグを受け取る
     @tag = ReviewTag.find(params[:review_tag_id])
     # 検索されたタグに紐づく投稿を表示
-    @reviews = @tag.reviews
+    @reviews = @tag.reviews.page(params[:page])
   end
 
   def index

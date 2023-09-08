@@ -27,6 +27,9 @@
           <%= render "public/reviews/list", review: @review %>
         </tbody>
       </table>
+      <div class="row justify-content-center">
+        <%= paginate @reviews %>
+      </div>
     </div>
   </div>
 </div>
