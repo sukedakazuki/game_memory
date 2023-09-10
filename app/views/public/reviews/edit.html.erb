@@ -30,11 +30,12 @@
           raty(elem, opt);
       </script>
 
-      <div class="col-md-4 d-flex justify-content-between m-auto mt-2 mb-2">
-        <div class="form-group mt-3">
-          <%= f.submit '編集内容を保存', class: 'btn btn-md btn-success' %>
-        </div>
+      <div class="d-flex justify-content-center">
+        <%= f.submit '編集内容を保存', class: 'btn btn-md btn-success mb-3' %>
       <% end %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= link_to "戻る", :back, class: "btn btn-md btn-secondary mt-3" %>
       </div>
     </div>
   </div>
