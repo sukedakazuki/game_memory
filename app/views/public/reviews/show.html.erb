@@ -6,23 +6,25 @@
       <h2>レビュー詳細</h2>
   	  <table class='table'>
   		  <tr>
-          <td class="h4"><%= image_tag @review.game.image_url %><%= @review.game.title %></td>
+          <td class="h4"><%= image_tag @review.game.image_url, class: "mr-5" %><%= @review.game.title %></td>
         </tr>
-        <tr id="rate_<%= @review.id %>"></tr>
-          <script>
-            let elem = document.querySelector('#rate_<%= @review.id %>');
-
-            let opt = {  
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              score: "<%= @review.rate %>",
-              readOnly: true,
-            };
-            raty(elem, opt);
-          </script>
         <tr>
           <td><%= @review.comment %></td>
+        </tr>
+        <tr>
+          <td id="rate_<%= @review.id %>"></td>
+            <script>
+              let elem = document.querySelector('#rate_<%= @review.id %>');
+  
+              let opt = {  
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                score: "<%= @review.rate %>",
+                readOnly: true,
+              };
+              raty(elem, opt);
+            </script>
         </tr>
         <tr>
           <td>
