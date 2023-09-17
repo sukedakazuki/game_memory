@@ -4,7 +4,7 @@
       <%= form_with url: games_search_path, method: :get, local: true do |f| %>
       <div class="form-group">
         <%= f.text_field :title, value: params[:title], class: "form-control" %>
-        <%= f.submit '製品名を検索', class: "form-control btn btn-primary" %>
+        <%= f.submit '製品名を検索', class: "form-control btn btn-primary mt-3" %>
       </div>
       <% end %>
     </div>
